@@ -5,6 +5,7 @@ void User::init(unsigned int id, std::string username, unsigned int age)
 	this->username = username;
 	this->age = age;
 	this->deviceList = new DevicesList();
+	this->deviceList->init();
 }
 void User::clear() 
 {
@@ -43,7 +44,7 @@ bool User::checkIfDevicesAreOn() const
 	{
 		node = this->deviceList->get_first();
 		device = node->get_data();
-		while (node->get_next() != NULL)
+		while (node != NULL)
 		{
 			if (device.isActive() == false)
 			{
