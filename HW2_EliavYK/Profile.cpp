@@ -1,4 +1,9 @@
 #include "Profile.h"
+/*
+initiating a profile
+input: user
+ouput:none
+*/
 void Profile::init(User owner)
 {
 	this->user = owner;
@@ -6,6 +11,11 @@ void Profile::init(User owner)
 	this->friendsList = new UserList;
 	this->friendsList->init();
 }
+/*
+clearing the profile
+input: None
+output : none
+*/
 void Profile::clear()
 {
 	this->user.clear();
@@ -13,26 +23,56 @@ void Profile::clear()
 	this->page.setStatus("");
 	friendsList->clear();
 }
+/*
+returns the user
+input: None
+output : user
+*/
 User Profile::getOwner() const
 {
 	return this->user;
 }
+/*
+seting the status
+input: status
+output : none
+*/
 void Profile::setStatus(const std::string new_status)
 {
 	this->page.setStatus(new_status);
 }
+/*
+adding a post
+input: post
+output : none
+*/
 void Profile::addPostToProfilePage(std::string post)
 {
 	this->page.addLineToPosts(post);
 }
+/*
+adding a friend
+input: friend to add
+output : none
+*/
 void Profile::addFriend(User friend_to_add)
 {
 	this->friendsList->add(friend_to_add);
 }
+/*
+returning the page
+input: none
+output : the page
+*/
 std::string Profile::getPage() const
 {
 	return "Status: " + this->page.getStatus() + "\n*******************\n*******************\n" + this->page.getPosts();
 }
+/*
+returning the names of his friends
+input: none
+output : the name of his friends
+*/
 std::string Profile::getFriends() const
 {
 	std::string names = "";
@@ -48,7 +88,11 @@ std::string Profile::getFriends() const
 	}
 	return names;
 }
-
+/*
+returning the name of his friends that have the same length as his name
+input: none
+output : the name of his friends that have the same length as his name
+*/
 std::string Profile::getFriendsWithSameNameLength() const
 {
 	std::string names = "";
